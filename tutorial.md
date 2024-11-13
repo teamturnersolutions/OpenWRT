@@ -1,3 +1,5 @@
+![OpenWrt Logo](https://upload.wikimedia.org/wikipedia/commons/8/84/OpenWrt_Logo.svg)
+
 ## Blog Post
 
 https://community.bigbeartechworld.com/t/setting-up-openwrt-on-a-virtual-machine-with-proxmox/257
