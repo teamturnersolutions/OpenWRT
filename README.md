@@ -1,3 +1,5 @@
+![OpenWrt Logo](https://upload.wikimedia.org/wikipedia/commons/8/84/OpenWrt_Logo.svg)
+
 ### **OpenWRT in a Proxmox Container (CT): Fact Sheet**
 
 ---
