@@ -130,3 +130,36 @@
 
 - **Proxmox Host Communication**:
   - Add static routes or use a management interface for host-to-OpenWRT communication.
+
+
+### WiFi in OpenWRT
+
+1. **Check Wi-Fi on the host**:
+   - Ensure that Wi-Fi is enabled on your host device.
+   - If you are using Proxmox, confirm that the Wi-Fi interface is functional and identified by the host (e.g., `iwconfig` or `nmcli`).
+
+2. **Passthrough Wi-Fi to the container**:
+   - If your OpenWRT container needs to manage Wi-Fi, you'll need to expose the Wi-Fi interface to the container. 
+   - **For privileged containers**:
+     - Use `lxc.mount.entry` in your Proxmox container's configuration file to bind the Wi-Fi interface.
+     - Alternatively, add the Wi-Fi interface to the container's network configuration.
+   - **For unprivileged containers**:
+     - You may need to switch to a privileged container for Wi-Fi passthrough, as access to hardware devices is generally restricted in unprivileged containers.
+
+3. **Manually create the `wireless` config file**:
+   - If the Wi-Fi hardware is present and detected but the config file is still missing, you can manually create `/etc/config/wireless` and populate it based on OpenWRT's defaults or examples from the documentation.
+
+4. **Restart OpenWRT services**:
+   - After making changes, restart the OpenWRT network service:
+     ```sh
+     /etc/init.d/network restart
+     ```
+
+---
+
+### To Check Wi-Fi Detection in the Container:
+Run the following command in the OpenWRT container:
+```sh
+iw dev
+```
+If no Wi-Fi interface is listed, it confirms that the container does not have access to the Wi-Fi hardware.
